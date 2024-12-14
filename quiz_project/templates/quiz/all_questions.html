@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>All Questions</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/styles.css' %}">
+</head>
+<body>
+    <h1>Quiz Questions</h1>
+    <form method="post" action="{% url 'quiz:submit_answer' %}">
+        {% csrf_token %}
+        {% for question in questions %}
+            <div>
+                <p>{{ question.question_text }}</p>
+                <label>
+                    <input type="radio" name="answer_{{ question.id }}" value="A" required> {{ question.option_a }}
+                </label><br>
+                <label>
+                    <input type="radio" name="answer_{{ question.id }}" value="B" required> {{ question.option_b }}
+                </label><br>
+                <label>
+                    <input type="radio" name="answer_{{ question.id }}" value="C" required> {{ question.option_c }}
+                </label><br>
+                <label>
+                    <input type="radio" name="answer_{{ question.id }}" value="D" required> {{ question.option_d }}
+                </label>
+            </div>
+        {% endfor %}
+        <button type="submit">Submit Answers</button>
+    </form>
+</body>
+</html>

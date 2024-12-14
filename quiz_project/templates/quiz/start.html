@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Start Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'quiz/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Quiz</h1>
+    <p>Here you can start the quiz. Click below to begin!</p>
+    <div>
+        <a href="{% url 'quiz:show_all_questions' %}"><button>Start Quiz</button></a>
+    </div>
+</body>
+</html>
